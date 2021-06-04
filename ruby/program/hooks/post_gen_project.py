@@ -18,3 +18,4 @@ json = urllib.request.urlopen('http://api.github.com/licenses/{}'.format(endpoin
 print(license)
 
 # create .envrc and allow
+# suggest to run .local/bin/setup

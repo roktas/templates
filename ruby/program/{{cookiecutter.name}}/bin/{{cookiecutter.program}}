@@ -1,0 +1,9 @@
+#!/usr/bin/env ruby
+
+require '{{ cookiecutter.name }}'
+
+def main
+  puts {{ cookiecutter.namespace }}::VERSION
+end
+
+main
