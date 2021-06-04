@@ -1,9 +1,12 @@
 {
-  "full_name":       "Recai Oktaş",
-  "email":           "roktas@gmail.com",
-  "github_username": "roktas",
-  "project_name":    "acme",
-  "description":     "ACME",
-  "namespace":       "{{ cookiecutter.project_name.split('-') | map('title') | join() }}",
-  "version":         "0.0.0"
+  "name":        "acme",
+  "author":      "Recai Oktaş",
+  "email":       "roktas@gmail.com",
+  "user":        "roktas",
+  "org":         "{{ cookiecutter.user }}",
+  "url":         "https://github.com/{{ cookiecutter.org }}/{{ cookiecutter.name }}",
+  "description": "TODO: Not yet writed",
+  "namespace":   "{{ cookiecutter.name.split('-') | map('title') | join() }}",
+  "version":     "0.0.0",
+  "license":     ["MIT", "GNU GPL v3.0", "Apache Software License 2.0", "Proprietary"]
 }
