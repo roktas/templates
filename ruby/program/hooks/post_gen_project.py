@@ -19,3 +19,4 @@ print(license)
 
 # create .envrc and allow
 # suggest to run .local/bin/setup
+# test run
