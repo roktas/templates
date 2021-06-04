@@ -16,3 +16,5 @@ json = urllib.request.urlopen('http://api.github.com/licenses/{}'.format(endpoin
 # TODO
 
 print(license)
+
+# create .envrc and allow
