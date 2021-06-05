@@ -1,0 +1,13 @@
+{
+  "name":        "acme",
+  "author":      "Recai Oktaş",
+  "email":       "roktas@gmail.com",
+  "user":        "roktas",
+  "org":         "{{ cookiecutter.user }}",
+  "url":         "https://github.com/{{ cookiecutter.org }}/{{ cookiecutter.name }}",
+  "description": "TODO: Not yet written",
+  "namespace":   "{{ cookiecutter.name.split('-') | map('title') | join() }}",
+  "program":     "{{ cookiecutter.name }}",
+  "version":     "0.0.0",
+  "license":     ["MIT", "GPL-3.0", "MPL-2.0", "Proprietary"]
+}
