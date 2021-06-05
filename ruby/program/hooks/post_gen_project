@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-LICENSES=(
+declare -Agr LICENSES=(
     ['CC0-1.0']='cc0-1.0'
     ['GPL-3.0']='gpl-3.0'
     ['MIT']='mit'
