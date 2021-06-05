@@ -1,6 +1,6 @@
 [
   {
-    "source": "post_gen_project",
+    "source": "ruby/program/hooks/post_gen_project",
     "series": [
       {
         "directive": "... github.com/alaturka/bash minimal all/kernel/available any/net/cat\n",
@@ -14,7 +14,7 @@
     ]
   },
   {
-    "source": "pre_gen_project",
+    "source": "ruby/program/hooks/pre_gen_project",
     "series": [
       {
         "directive": "... github.com/alaturka/bash minimal all/kernel/ensure-\n",
