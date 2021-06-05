@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-
+{% raw %}
 set -Eeuo pipefail; shopt -s nullglob; unset CDPATH; IFS=$' \t\n'
 
 die() {
@@ -40,6 +40,7 @@ declare -Agr LICENSES=(
     ['MIT']='mit'
     ['MPL-2.0']='mpl-2.0'
 )
+{% endraw %}
 
 main() {
 	local license='{{ cookiecutter.license }}'
