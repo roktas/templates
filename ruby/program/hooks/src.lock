@@ -1,0 +1,30 @@
+[
+  {
+    "source": "post_gen_project",
+    "series": [
+      {
+        "directive": "... github.com/alaturka/bash minimal all/kernel/available any/net/cat\n",
+        "insertion": {
+          "before": 13,
+          "after": 19,
+          "signature": "\tcommand -v \"${1?${FUNCNAME[0]}: missing argument}\" &>/dev/null\n",
+          "digest": "0d7da640a2f42090bcd83b037c722b3d0d07406b5b2fd134233d3ac469b17493"
+        }
+      }
+    ]
+  },
+  {
+    "source": "pre_gen_project",
+    "series": [
+      {
+        "directive": "... github.com/alaturka/bash minimal all/kernel/ensure-\n",
+        "insertion": {
+          "before": 17,
+          "after": 4,
+          "signature": "\t\tcommand -v \"$prog\" &>/dev/null || missings+=(\"$prog\")\n",
+          "digest": "bf442ed0a3a8809c0ea3ec62dfb9cf4e2baae36f9c1aacf75db5c0e05b99fee4"
+        }
+      }
+    ]
+  }
+]

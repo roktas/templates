@@ -1,5 +1,39 @@
 #!/usr/bin/env bash
 
+set -Eeuo pipefail; shopt -s nullglob; unset CDPATH; IFS=$' \t\n'
+
+die() {
+	if [[ $# -gt 0 ]]; then
+		echo -e >&2 "E: $*"
+	else
+		echo >&2 ""
+	fi
+
+	exit 1
+}
+
+available() {
+	command -v "${1?${FUNCNAME[0]}: missing argument}" &>/dev/null
+}
+
+getting() {
+	local message="${1?${FUNCNAME[0]}: missing argument}"; shift
+
+	echo -e >&2 "... $message"
+
+	"$@"
+}
+
+net.cat() {
+	local url=${1?${FUNCNAME[0]}: missing argument}; shift
+
+	[[ $url =~ ^[^:]+:// ]] || url=https://$url
+
+	curl --output /dev/null --silent --head --fail "$url" || die "URL not gettable: $url"
+
+	getting 'Getting file' curl -fsSL "$url"
+}
+
 declare -Agr LICENSES=(
     ['CC0-1.0']='cc0-1.0'
     ['GPL-3.0']='gpl-3.0'
@@ -9,7 +43,9 @@ declare -Agr LICENSES=(
 
 main() {
 	local license='{{ cookiecutter.license }}'
-	echo "${LICENSES[$license]}"
+	local endpoint=${LICENSES[$license]:-}
+
+	net.cat "https://api.github.com/licenses/${endpoint}" | jq -r '.body' >LICENSE
 }
 
 # TODO

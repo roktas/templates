@@ -1,3 +1,48 @@
-#!/usr/bin/env ruby
+#!/usr/bin/env bash
 
-puts 'ruby'
+set -Eeuo pipefail; shopt -s nullglob; unset CDPATH; IFS=$' \t\n'
+
+die() {
+	if [[ $# -gt 0 ]]; then
+		echo -e >&2 "E: $*"
+	else
+		echo >&2 ""
+	fi
+
+	exit 1
+}
+
+ensure-() {
+	local missings=()
+
+	local prog
+	for prog; do
+		command -v "$prog" &>/dev/null || missings+=("$prog")
+	done
+
+	[[ ${#missings[@]} -eq 0 ]] || die "Programs required: ${missings[*]}"
+}
+
+validate_template() {
+	python3 <<-EOF
+		import re
+		import sys
+
+		MODULE_REGEX = r'^[_a-zA-Z][_a-zA-Z0-9]+$'
+
+		module_name = '{{ cookiecutter.module_name }}'
+
+		if not re.match(MODULE_REGEX, module_name):
+		    print('ERROR: %s is not a valid Python module name!' % module_name)
+
+		    # exits with status 1 to indicate failure
+		    sys.exit(1)
+	EOF
+}
+
+main() {
+	validate_template
+	ensure- curl jq
+}
+
+main
