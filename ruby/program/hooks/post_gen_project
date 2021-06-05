@@ -46,7 +46,9 @@ main() {
 	local license='{{ cookiecutter.license }}'
 	local endpoint=${LICENSES[$license]:-}
 
-	net.cat "https://api.github.com/licenses/${endpoint}" | jq -r '.body' >LICENSE
+	net.cat "https://api.github.com/licenses/${endpoint}" |
+	jq -r '.body' |
+	sed -e "1,5 s/\[year\]/$(date +'%Y')/g" -e '1,5 s/\[fullname\]/{{ cookiecutter.author }}/g' >LICENSE
 }
 
 # TODO
