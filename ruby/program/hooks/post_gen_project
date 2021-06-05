@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+LICENSES=(
+    ['CC0-1.0']='cc0-1.0'
+    ['GPL-3.0']='gpl-3.0'
+    ['MIT']='mit'
+    ['MPL-2.0']='mpl-2.0'
+)
+
+main() {
+	local license='{{ cookiecutter.license }}'
+	echo "${LICENSES[$license]}"
+}
+
+# TODO
+# create .envrc and allow
+# suggest to run .local/bin/setup
+# test run
+
+main
