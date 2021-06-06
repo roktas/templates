@@ -2,7 +2,9 @@
 main() {
 	echo "$0"
 
-	ls "${0%/*}"
+	echo "${0%/*}"
+
+	pwd
 }
 
 main
