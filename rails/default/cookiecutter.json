@@ -9,5 +9,6 @@
   "namespace":   "{{ cookiecutter.name.split('-') | map('title') | join() }}",
   "program":     "{{ cookiecutter.name }}",
   "version":     "0.0.0",
-  "license":     ["MIT", "GPL-3.0", "MPL-2.0", "Proprietary"]
+  "license":     ["MIT", "GPL-3.0", "MPL-2.0", "Proprietary"],
+  "database":    ["sqlite3", "postgresql", "mysql"]
 }
